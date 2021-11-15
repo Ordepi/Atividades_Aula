@@ -1,10 +1,3 @@
-/* Faça um programa imprima na tela um Menu que permita o usuário escolher as seguintes operações: +, -, /, *.
-Se um operador inválido for digitado deve ser impresso um erro
-Se o usuário digitar ! o programa deve ser finalizado
-Se o usuário escolher uma das quatro operações, o programa deve
-ler dois números reais e efetuá-los
-Faça funções para escrever o Menu, realizar a operação e verificar se
-o operador é válido */
 #include <stdio.h>
 
 void menu() {
@@ -14,16 +7,25 @@ void menu() {
     printf("- para subtracao\n");
     printf("* para multiplicacao\n");
     printf("/ para divisao\n");
+    printf("%% para resto\n");
+    printf("$ para potencia\n");
     printf("! para encerrar\n");
     printf("===> ");
 
 }
 int opValido(char op){
 
-    if (op == '+'|| op == '-'|| op == '/'|| op == '*' || op == '!')
+    if (op == '+'|| op == '-'|| op == '/'|| op == '*' || op == '%' || op == '$' || op == '!')
         return 1;
     else
         return 0;
+}
+int pot(A,B) {
+  int i, resultado;
+  resultado = 1;
+  for (i=0;i<B;i++)
+    resultado = resultado*A;
+  return(resultado);
 }
 void operacao(int A, int B, char op) {
     
@@ -43,6 +45,12 @@ void operacao(int A, int B, char op) {
             else
                 printf("\nA divisao nao pode ser realizada!\n");
             break;
+        case '%': 
+          printf("\nO resto é: %d\n", A%B);
+          break;
+        case '$': 
+          printf("\nA potência é: %d\n",  pot(A,B));
+          break;
     }
 }
 int main(void) {
